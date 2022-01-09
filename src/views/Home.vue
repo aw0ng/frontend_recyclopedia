@@ -1,19 +1,33 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
+    <h1>ALL items</h1>
+    <div v-for="item in items" v-bind:key="item.id">
+      <h2>{{ item.item }}</h2>
+    </div>
   </div>
 </template>
 
 <style></style>
 
 <script>
+import axios from "axios";
+
 export default {
   data: function () {
     return {
-      message: "Welcome to Vue.js!",
+      items: [],
     };
   },
-  created: function () {},
-  methods: {},
+  created: function () {
+    this.indexItems();
+  },
+  methods: {
+    indexItems: function () {
+      axios.get("/api/items").then((response) => {
+        this.items = response.data;
+        console.log("items index", response);
+      });
+    },
+  },
 };
 </script>

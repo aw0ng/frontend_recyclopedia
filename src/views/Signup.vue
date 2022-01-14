@@ -32,6 +32,20 @@
   </div>
 </template>
 
+<style scoped>
+.signup {
+  margin-top: 10rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.form-group {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  text-align: left;
+}
+</style>
+
 <script>
 import axios from "axios";
 

@@ -20,6 +20,20 @@
   </div>
 </template>
 
+<style scoped>
+.login {
+  margin-top: 10rem;
+  text-align: center;
+  margin-bottom: 20rem;
+}
+
+.form-group {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  text-align: left;
+}
+</style>
+
 <script>
 import axios from "axios";
 

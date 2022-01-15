@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>Donors</h1>
+    <h1>Profile</h1>
     <div v-for="donor in donors" v-bind:key="donor.id">
       <h2>{{ donor.first_name }} {{ donor.last_name }}</h2>
       <h2>{{ donor.email }}</h2>

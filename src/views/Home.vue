@@ -12,7 +12,7 @@
       </div>
     </div>
     <h1>CATEGORIES</h1>
-    <div v-for="category in categories" v-bind:key="category.id">
+    <div v-for="category in categories" v-bind:key="category.category_type">
       <h2>{{ category.category_type }}</h2>
     </div>
   </div>

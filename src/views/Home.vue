@@ -15,6 +15,10 @@
     <div v-for="category in categories" v-bind:key="category.category_type">
       <h2>{{ category.category_type }}</h2>
     </div>
+    <h1>RECEIVERS</h1>
+    <div v-for="receiver in receivers" v-bind:key="receiver.receiver_name">
+      <h2>{{ receiver.receiver_name }}</h2>
+    </div>
   </div>
 </template>
 
@@ -34,11 +38,13 @@ export default {
     return {
       items: [],
       categories: [],
+      receivers: [],
     };
   },
   created: function () {
     this.indexItems();
     this.indexCategories();
+    this.indexReceivers();
   },
   methods: {
     indexItems: function () {
@@ -51,6 +57,12 @@ export default {
       axios.get("/api/categories").then((response) => {
         this.categories = response.data;
         console.log("categories index", response);
+      });
+    },
+    indexReceivers: function () {
+      axios.get("/api/receivers").then((response) => {
+        this.receivers = response.data;
+        console.log("receivers index", response);
       });
     },
   },

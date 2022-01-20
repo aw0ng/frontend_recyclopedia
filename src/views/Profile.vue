@@ -10,6 +10,7 @@
         </div>
       </div>
     </div>
+    <body data-first_name="current_donor.first_name" />
   </div>
 </template>
 
@@ -28,16 +29,32 @@ export default {
   data: function () {
     return {
       donors: [],
+      // donor: [],
+      current_donor: [],
     };
   },
   created: function () {
     this.indexDonors();
+    // this.currentDonor();
+    this.data();
   },
   methods: {
     indexDonors: function () {
       axios.get("/api/donors").then((response) => {
         this.donors = response.data;
         console.log("donors index", response);
+      });
+    },
+    // currentDonor: function () {
+    //   axios.get("/api/donors").then((response) => {
+    //     this.donor = response.data.find_by();
+    //     console.log("current user", response);
+    //   });
+    // },
+    data: function () {
+      axios.get("/api/donors").then((response) => {
+        current_donor = data.first_name;
+        console.log("current_donor", response);
       });
     },
   },

@@ -1,16 +1,16 @@
 <template>
-  <div class="profile">
+  <div class="Profile">
     <h1>Profile</h1>
     <!-- <div v-for="donor in donors" v-bind:key="donor.id"> -->
-    <h2>{{ donor.first_name }} {{ donor.last_name }}</h2>
-    <h2>{{ donor.email }}</h2>
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <img class="img-cover" v-bind:src="donor.image" v-bind:alt="donor.first_name" />
+    <div>
+      <h2>{{ donor.first_name }} {{ donor.last_name }}</h2>
+      <h2>{{ donor.email }}</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <img class="img-cover" v-bind:src="donor.image" v-bind:alt="donor.first_name" />
+        </div>
       </div>
-      <!-- </div> -->
     </div>
-    <body data-first_name="current_donor.first_name" />
   </div>
 </template>
 
@@ -33,13 +33,16 @@ export default {
     };
   },
   created: function () {
+    this.showDonor();
     // this.indexDonors();
-    axios.get("/api/donors" + this.$route.params.id).then((response) => {
-      console.log("donor show", response);
-      this.donor = response.data;
-    });
   },
   methods: {
+    showDonor: function () {
+      axios.get("/api/donors/" + this.$route.params.id).then((response) => {
+        console.log("donor show", response);
+        this.donor = response.data;
+      });
+    },
     //   indexDonors: function () {
     //     axios.get("/api/donors").then((response) => {
     //       this.donors = response.data;

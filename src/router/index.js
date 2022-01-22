@@ -5,6 +5,7 @@ import About from "../views/About.vue";
 import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Profile from "../views/Profile.vue";
+import ItemsNew from "../views/ItemsNew.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/profile/:id",
     name: "Profile",
     component: Profile,
+  },
+  {
+    path: "/items/new",
+    name: "items-new",
+    component: ItemsNew,
   },
 ];
 

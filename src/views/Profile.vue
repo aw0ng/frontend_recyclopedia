@@ -1,7 +1,6 @@
 <template>
   <div class="Profile">
     <h1>Profile</h1>
-    <!-- <div v-for="donor in donors" v-bind:key="donor.id"> -->
     <div>
       <h2>{{ donor.first_name }} {{ donor.last_name }}</h2>
       <h2>{{ donor.email }}</h2>
@@ -10,6 +9,10 @@
           <img class="img-cover" v-bind:src="donor.image" v-bind:alt="donor.first_name" />
         </div>
       </div>
+    </div>
+    <h1>My Items</h1>
+    <div v-for="item in items" v-bind:key="item.id">
+      <h2>{{ item.item }}</h2>
     </div>
   </div>
 </template>
@@ -28,13 +31,13 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      // donors: [],
       donor: {},
+      items: [],
     };
   },
   created: function () {
     this.showDonor();
-    // this.indexDonors();
+    this.donorItems();
   },
   methods: {
     showDonor: function () {
@@ -43,12 +46,12 @@ export default {
         this.donor = response.data;
       });
     },
-    //   indexDonors: function () {
-    //     axios.get("/api/donors").then((response) => {
-    //       this.donors = response.data;
-    //       console.log("donors index", response);
-    //     });
-    //   },
+    donorItems: function () {
+      axios.get("/api/items").then((response) => {
+        this.items = response.data;
+        console.log("items index", response);
+      });
+    },
   },
 };
 </script>
